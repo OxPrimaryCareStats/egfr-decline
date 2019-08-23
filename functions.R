@@ -4,21 +4,6 @@
 #                 #
 #=================#
 
-#####################
-### Notifications ###
-#####################
-
-notify <- function(message){
-  if(Sys.info()["sysname"] == "Linux"){
-    message <- paste0("'", message, "'")
-    system(paste("notify-send -c im -u low -i /usr/share/pixmaps/rstudio.png RStudio", message))
-  }
-  #if(Sys.info()["sysname"] == "Darwin"){
-  #  message <- paste0("'", message, "'")
-  #  system(cat("osascript -e \"", paste("display notification", message, "with title 'RStudio'"), "\"", sep = ""))
-  #}
-}
-
 ##############################
 ### Convert Rates to x/day ###
 ##############################

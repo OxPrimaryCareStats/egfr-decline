@@ -24,6 +24,7 @@ suppressPackageStartupMessages(library(fst)) # Fast Data I/O
 suppressPackageStartupMessages(library(parallel)) # Parallelisation.
 suppressPackageStartupMessages(library(data.table)) # Data management.
 suppressPackageStartupMessages(library(msm)) # Modelling.
+suppressPackageStartupMessages(library(msmtools)) # Modelling.
 
 ### Parallelisation Opions ###
 options(mc.cores = detectCores())
@@ -45,7 +46,7 @@ mnt.pt <- switch(Sys.info()[["sysname"]],
 
 ## Code & Code-List Directories ##
 if(.Platform[["OS.type"]] == "unix"){
-  git <- "~/Git/CKD"
+  git <- "~/Git/eGFR Decline"
   codelists <- "~/Git/Code Lists"
 } else {
   git <- file.path(mnt.pt, "CPRD_14_150R", "scripts", "Ben")
@@ -75,33 +76,21 @@ setwd(git)
 source("lookup.R", echo = T)
 setwd(git)
 source("setup.R", echo = T)
-# setwd(git)
-# source("exposures.R", echo = T)
 setwd(git)
 source("exposures_date.R", echo = T)
-# setwd(git)
-# source("therapies.R", echo = T)
 setwd(git)
 source("therapies_date.R", echo = T)
-# setwd(git)
-# source("testsperyear.R", echo = T)
 setwd(git)
 source("serum_creatinine_test.R", echo = T)
 setwd(git)
 source("proteinuria_test.R", echo = T)
-# setwd(git)
-# source("dataset_compile.R", echo = T)
 setwd(git)
-source("dataset_compile_date.R", echo = T)
-# setwd(git)
-# source("dataset_compile_glm.R", echo = T)
-# setwd(git)
-# source("dataset_compile_lme.R", echo = T)
-# setwd(git)
-# source("dataset_compile_markov.R", echo = T)
-# setwd(git)
-# source("baseline_table.R", echo = T)
-# setwd(git)
-# source("summary_stats.R", echo = T)
-# setwd(git)
-# source("modelling_glm.R", echo = T)
+source("dataset_compile_markov.R", echo = T)
+setwd(git)
+source("modelling_hmm_unmeas.R", echo = T)
+setwd(git)
+source("modelling_hmm_normo.R", echo = T)
+setwd(git)
+source("modelling_hmm_micro.R", echo = T)
+setwd(git)
+source("modelling_hmm_macro.R", echo = T)

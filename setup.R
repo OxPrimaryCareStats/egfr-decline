@@ -47,9 +47,8 @@ patient.practice <- PRG[patient.practice, on = "code"]
 
 ### Data Cleaning ###
 setnames(patient.practice, "practice.region", "region")
-patient.practice[, region := factor(region,
-                                    c("London", "East Midlands", "East of England", "North East", "North West", "South Central", "South East Coast", "South West", "West Midlands", "Yorkshire & The Humber", "Northern Ireland", "Scotland", "Wales"),
-                                    c("London", "East Midlands", "East of England", "North East", "North West", "South Central", "South East Coast", "South West", "West Midlands", "Yorkshire & The Humber", "Northern Ireland", "Scotland", "Wales"))]
+regions <- c("London", "East Midlands", "East of England", "North East", "North West", "South Central", "South East Coast", "South West", "West Midlands", "Yorkshire & The Humber", "Northern Ireland", "Scotland", "Wales")
+patient.practice[, region := factor(region, regions, regions)]; rm(regions)
 patient.practice <- patient.practice[, .(patid, pracid, region, gender, dob, frd, crd, tod, death.date, lcd, uts)]
 setkey(patient.practice, patid, pracid)
 
