@@ -106,7 +106,7 @@ setkey(hes.int, patid)
 hes <- merge(hes.basic, hes.int, by = "patid", all = T); rm(hes.basic, hes.int)
 
 ### Data Cleaning ###
-setnames(hes, names(hes), tolower(gsub("_", "\\.", names(hes))))
+setnames(hes, tolower(gsub("_", "\\.", names(hes))))
 setnames(hes, "gen.ethnicity", "ethnic.group.hes")
 hes <- hes[match.rank <= 3] # Revise this strategy.
 hes[, discharged := as.IDate(discharged, format = "%d/%m/%Y")]
@@ -114,7 +114,7 @@ hes <- hes[, .(patid, pracid, ethnic.group.hes, discharged, icd)]
 
 ### Generate HES Ethnicity Variable ###
 # 1 = "White"; 2 = "Asian"; 3 = "Black"; 4 = "Mixed"; 5 = "Other"
-hes[, ethnicity.hes := as.integer(NA)]
+hes[, ethnicity.hes := NA_integer_]
 hes[ethnic.group.hes == "White", ethnicity.hes := 1L]
 hes[ethnic.group.hes %in% c("Bangladeshi", "Chinese", "Indian", "Oth_Asian", "Pakistani"), ethnicity.hes := 2L]
 hes[ethnic.group.hes %in% c("Bl_Afric", "Bl_Carib", "Bl_Other"), ethnicity.hes := 3L]
@@ -152,7 +152,7 @@ setwd(linkage)
 imd <- read_fst("patient_imd.fst", as.data.table = T)
 
 ### Data Cleaning ###
-setnames(imd, names(imd), gsub("_", "\\.", names(imd)))
+setnames(imd, gsub("_", "\\.", names(imd)))
 setnames(imd, "imd2010.5", "imd")
 imd[, imd := factor(imd)]
 setkey(imd, patid, pracid)
