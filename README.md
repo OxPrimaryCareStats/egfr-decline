@@ -1,4 +1,5 @@
 # Statistical models for the deterioration of kidney function in a primary care population: A retrospective database analysis
+[![DOI](https://zenodo.org/badge/201762488.svg)](https://zenodo.org/badge/latestdoi/201762488)
 
 ## Requirements
 Data managment scripts were implemented in R version 3.6.1 (Action of the Toes) using version 1.12.2 of the _data.table_ package. A few of the scripts contain instances of parallelisation performed using the `mclapply()` function. This function implements parallelisaton via 'thread-forking', which is not possible on Windows systems at the time of writing this. Hence, these will need to be changed to `lapply()` if the script is to be run on a Windows system. The data management on this project was intended to feed into three workstreams of a large programme grant, ergo there may be some files that get created, but appear not to be used. I've done my best to trim these from this repository, but bear in mind that a few of these may still be haning around.
